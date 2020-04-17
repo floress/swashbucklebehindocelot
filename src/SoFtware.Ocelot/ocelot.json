@@ -1,0 +1,22 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 53783
+        }
+      ],
+      "UpstreamPathTemplate": "/microservice/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "DownstreamScheme": "http",
+    "LoadBalancerOptions": {
+      "Type": "LeastConnection"
+    }
+  }
+}
