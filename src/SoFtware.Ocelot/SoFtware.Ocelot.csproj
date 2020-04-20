@@ -8,4 +8,8 @@
     <PackageReference Include="Ocelot" Version="15.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoFtware.Swagger\SoFtware.Swagger.csproj" />
+  </ItemGroup>
+
 </Project>

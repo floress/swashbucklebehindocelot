@@ -1,0 +1,6 @@
+{
+  "SwaggerBehindProxy": {
+    "Enabled": true,
+    "Prefixes": ["swagger", "docs"]
+  }
+}
