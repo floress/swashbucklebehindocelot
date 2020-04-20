@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Sebastián Flores</Authors>
+    <Description>An approach to middleware for Open Api Specification</Description>
+    <Product>Swashbuckle Behind Ocelot</Product>
   </PropertyGroup>
 
   <ItemGroup>
