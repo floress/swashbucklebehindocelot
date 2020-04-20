@@ -4,8 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Sebastián Flores</Authors>
-    <Description>An approach to middleware for Open Api Specification</Description>
+    <Description>Swashbuckle Behind Ocelot - An approach to middleware for Open Api Specification</Description>
     <Product>Swashbuckle Behind Ocelot</Product>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.1</AssemblyVersion>
+    <FileVersion>1.0.3.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -52,7 +52,7 @@ namespace SoFtware.Swagger
                 return;
             }
 
-            var path = context.Request.Path;
+            var path = context.Request.PathBase.HasValue ? context.Request.PathBase.Add(context.Request.Path) : context.Request.Path;
 
             if (!path.HasValue || path.Value.Equals("/"))
             {
@@ -74,9 +74,9 @@ namespace SoFtware.Swagger
             {
                 var referenceToOriginalBody = context.Response.Body;
 
-                await using var responseBody = new MemoryStream();
+                await using var nullBody = new MemoryStream();
 
-                context.Response.Body = responseBody;
+                context.Response.Body = nullBody;
 
                 await _next(context);
 
@@ -92,6 +92,8 @@ namespace SoFtware.Swagger
                 {
                     var html = new HtmlDocument();
                     html.LoadHtml(response);
+                    var comment = html.CreateComment("<!-- Swashbuckle Behind Ocelot -->\n");
+                    html.DocumentNode.InsertBefore(comment, html.DocumentNode.FirstChild);
                     var title = html.DocumentNode.SelectSingleNode("//title")?.InnerText ?? "";
 
                     if (title.Equals("Swagger UI", StringComparison.InvariantCultureIgnoreCase))
@@ -121,8 +123,8 @@ namespace SoFtware.Swagger
                 // important! fix content length
                 context.Response.Headers.ContentLength = buffer.Length;
                 await referenceToOriginalBody.WriteAsync(buffer, 0, buffer.Length);
-                responseBody.Seek(0, SeekOrigin.Begin);
-                await responseBody.CopyToAsync(referenceToOriginalBody);
+                //responseBody.Seek(0, SeekOrigin.Begin);
+                //await responseBody.CopyToAsync(referenceToOriginalBody);
             }
             else
             {

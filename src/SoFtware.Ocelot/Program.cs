@@ -30,6 +30,9 @@ namespace SoFtware.Ocelot
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseIIS();
+                    webBuilder.UseIISIntegration();
+
                     webBuilder.ConfigureServices(services =>
                     {
                         services.AddOcelot();
